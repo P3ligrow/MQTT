@@ -79,18 +79,12 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "NO Conectado ", Toast.LENGTH_SHORT).show();
                 }
 
-
             });
 
 
         } catch (MqttException e) {
             e.printStackTrace();
         }
-
-
-
-
-
 
     }
 
@@ -105,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public  void  publicarD1 (View v) {
-        String tema="st";///corrrespode al tema de LED
-        String  menssage="ON";
-        publicaste= "publicaras " + tema + " " + menssage; //concatenamos el dato a publicar
+    public  void  led1 (View v) {
+        String tema="km/01";///corrrespode al tema de LED
+        String  menssage="1";
+        publicaste= "publicaras " + tema + " " + menssage+" / LED 1"; //concatenamos el dato a publicar
         intento_publicar=true;//si intento publicar
         checar_conexion();//revisamos la conexion
 
@@ -126,10 +120,81 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    public  void  publicarD2 (View v) {
-        String tema="st";///corrrespode al tema de LED
-        String  menssage="OFF";
-        publicaste= "publicaras " + tema + " " + menssage; //concatenamos el dato a publicar
+
+
+
+    public  void  led2 (View v) {
+        String tema="km/02";///corrrespode al tema de LED
+        String  menssage="1";
+        publicaste= "publicaras " + tema + " " + menssage+" / LED 2"; //concatenamos el dato a publicar
+        intento_publicar=true;//si intento publicar
+        checar_conexion();//revisamos la conexion
+
+        if (permiso_publicar){
+
+            try {
+                int qos=0;//indica la prioridad del mensaje.
+                // 0:envio una vez,
+                // 1:se envia hasta garantizar la entrega en caso de fallo resive duplicados
+                //2: se  garantiza que se entrege al subcribtor unicamente una vez
+                //retenid=false;//true es que el mensaje se quede guardado en el broker asta su actualizacion
+                client.publish(tema, menssage.getBytes(),qos, false);
+                Toast.makeText(getBaseContext(), publicaste, Toast.LENGTH_SHORT).show();
+            }catch (Exception e){e.printStackTrace();}
+        }
+
+    }
+
+
+    public  void  led3 (View v) {
+        String tema="km/03";///corrrespode al tema de LED
+        String  menssage="1";
+        publicaste= "publicaras " + tema + " " + menssage+" / LED 3"; //concatenamos el dato a publicar
+        intento_publicar=true;//si intento publicar
+        checar_conexion();//revisamos la conexion
+
+        if (permiso_publicar){
+
+            try {
+                int qos=0;//indica la prioridad del mensaje.
+                // 0:envio una vez,
+                // 1:se envia hasta garantizar la entrega en caso de fallo resive duplicados
+                //2: se  garantiza que se entrege al subcribtor unicamente una vez
+                //retenid=false;//true es que el mensaje se quede guardado en el broker asta su actualizacion
+                client.publish(tema, menssage.getBytes(),qos, false);
+                Toast.makeText(getBaseContext(), publicaste, Toast.LENGTH_SHORT).show();
+            }catch (Exception e){e.printStackTrace();}
+        }
+
+    }
+
+    public  void  led4 (View v) {
+        String tema="km/04";///corrrespode al tema de LED
+        String  menssage="1";
+        publicaste= "publicaras " + tema + " " + menssage+" / LED 4"; //concatenamos el dato a publicar
+        intento_publicar=true;//si intento publicar
+        checar_conexion();//revisamos la conexion
+
+        if (permiso_publicar){
+
+            try {
+                int qos=0;//indica la prioridad del mensaje.
+                // 0:envio una vez,
+                // 1:se envia hasta garantizar la entrega en caso de fallo resive duplicados
+                //2: se  garantiza que se entrege al subcribtor unicamente una vez
+                //retenid=false;//true es que el mensaje se quede guardado en el broker asta su actualizacion
+                client.publish(tema, menssage.getBytes(),qos, false);
+                Toast.makeText(getBaseContext(), publicaste, Toast.LENGTH_SHORT).show();
+            }catch (Exception e){e.printStackTrace();}
+        }
+
+    }
+
+
+    public  void  offAll (View v) {
+        String tema="km/05";///corrrespode al tema de LED
+        String  menssage="0";
+        publicaste= "publicaras " + tema + " " + menssage+" / OFF ALL"; //concatenamos el dato a publicar
         intento_publicar=true;//si intento publicar
         checar_conexion();//revisamos la conexion
 
